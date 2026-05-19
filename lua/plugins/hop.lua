@@ -6,17 +6,19 @@ return {
   end,
   keys = {
     {
-      "<leader><leader>w",
+      "<leader>w",
       function()
         require("hop").hint_words()
       end,
+      mode = { "n", "x", "o" },
       desc = "Hop to word",
     },
     {
-      "<leader><leader>f",
+      "<leader>f",
       function()
         require("hop").hint_char1()
       end,
+      mode = { "n", "x", "o" },
       desc = "Hop to char",
     },
   },
