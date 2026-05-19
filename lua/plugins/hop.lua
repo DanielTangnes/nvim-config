@@ -10,7 +10,7 @@ return {
       function()
         require("hop").hint_words()
       end,
-      mode = { "n", "x", "o" },
+      mode = { "n", "v", "o" },
       desc = "Hop to word",
     },
     {
@@ -18,7 +18,7 @@ return {
       function()
         require("hop").hint_char1()
       end,
-      mode = { "n", "x", "o" },
+      mode = { "n", "v", "o" },
       desc = "Hop to char",
     },
   },
