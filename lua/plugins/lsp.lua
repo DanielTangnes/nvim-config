@@ -1,17 +1,3 @@
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-vim.lsp.config("lua_ls", {
-  capabilities = capabilities,
-})
-
-vim.lsp.config("pyright", {
-  capabilities = capabilities,
-})
-
-vim.lsp.config("bashls", {
-  capabilities = capabilities,
-})
-
 return {
   {
     "williamboman/mason.nvim",
@@ -19,35 +5,40 @@ return {
       require("mason").setup()
     end,
   },
-
   {
     "williamboman/mason-lspconfig.nvim",
+    -- Vi trigger innlasting når du åpner en kodefil, eller kjører en Mason-kommando
+    event = { "BufReadPre", "BufNewFile" },
+    cmd = { "LspInstall", "LspUninstall" },
     dependencies = {
       "williamboman/mason.nvim",
+      "neovim/nvim-lspconfig",
     },
     config = function()
+      local lspconfig = require("lspconfig")
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
       require("mason-lspconfig").setup({
         ensure_installed = {
           "lua_ls",
           "pyright",
           "bashls",
+          "terraformls",
+        },
+        handlers = {
+          function(server_name)
+            lspconfig[server_name].setup({
+              capabilities = capabilities,
+            })
+          end,
         },
       })
     end,
   },
-
   {
     "neovim/nvim-lspconfig",
-    config = function()
-
-      vim.lsp.config("lua_ls", {})
-      vim.lsp.config("pyright", {})
-      vim.lsp.config("bashls", {})
-
-      vim.lsp.enable("lua_ls")
-      vim.lsp.enable("pyright")
-      vim.lsp.enable("bashls")
-
-    end,
+    -- Sørger for at lspconfig faktisk eksisterer i Neovim
+    lazy = true,
   },
 }
+
