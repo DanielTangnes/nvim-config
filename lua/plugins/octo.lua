@@ -6,6 +6,10 @@ return {
     picker = "telescope",
     -- bare Octo command opens picker of commands
     enable_builtin = true,
+
+    supress_missing_scope = {
+	    projects_v2 = true,
+    },
   },
   keys = {
     {
