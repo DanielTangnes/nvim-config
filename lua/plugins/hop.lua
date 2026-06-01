@@ -20,5 +20,13 @@ return {
       mode = { "n", "v", "o" },
       desc = "Hop to char",
     },
+    {
+      "<leader>l",
+      function()
+	require("hop").hint_lines({ multi_windows = true })
+      end,
+      mode = { "n", "v", "o" },
+      desc = "Hop to line",
+    },
   },
 }
