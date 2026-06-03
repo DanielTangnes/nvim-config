@@ -1,17 +1,18 @@
 return {
     {
-	"folke/tokyonight.nvim",
-	config = function()
-	    vim.cmd.colorscheme "tokyonight"
-	end
+      'f4z3r/gruvbox-material.nvim',
+      name = 'gruvbox-material',
+      lazy = false,
+      priority = 1000,
+      opts = {},
     },
     {
 	"nvim-lualine/lualine.nvim",
-	dependencier = {
+	dependencies = {
 	    "nvim-tree/nvim-web-devicons",
     },
     opts = {
-	theme = 'tokyonight',
+	theme = 'gruvbox-material',
     }
     },
 }
