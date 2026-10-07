@@ -2,7 +2,9 @@ vim.opt.number = true
 vim.opt.cursorline = true
 vim.opt.relativenumber = true
 
-vim.opt.shiftwidth = 4
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.expandtab = true
 vim.opt.scrolloff = 999
 
 vim.opt.ignorecase = true
